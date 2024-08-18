@@ -20,22 +20,19 @@
     }
 
     .roulette {
+      position:absolute;
+      top: 0;
+      left: 0;
+      right:0;
+      margin: auto;
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background-color: skyblue;
-      position: absolute;
-      z-index : 9;
-      top: 200px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-.option {
-      position: absolute;
-      background-color: transparent;
-
+      border: solid black 2px;
+      background-color: purple;
     }
     .yes {
-
+      position: relative;
       width: 0px;
       height: 0px;
       border-style: solid;
@@ -49,6 +46,8 @@
     }
 
     .no {
+      position: absolute;
+      top: 0;
       width: 0px;
       height: 0px;
       border-style: solid;
@@ -56,8 +55,8 @@
       border-top-left-radius: 50%;
       border-top-right-radius: 50%;
       border-bottom-right-radius: 50%;
-      border-width: 300px 0 0 0px;
-      border-color: transparent black;
+      border-width: 300px 0 0 300px;
+      border-color: transparent green;
       transform: rotate(225deg);
 
 
