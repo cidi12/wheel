@@ -32,34 +32,28 @@
       background-color: purple;
     }
     .yes {
-      position: relative;
-      width: 0px;
-      height: 0px;
-      border-style: solid;
+      position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     margin: auto;
+      width: 0;
+      height: 0;
+      border-left: 150px solid cyan;
+      border-right: 150px solid red;
+      border-bottom: 150px solid green;
+      border-top: 150px solid blue;
+      display: inline-block;
       border-bottom-left-radius: 50%;
       border-top-left-radius: 50%;
       border-top-right-radius: 50%;
       border-bottom-right-radius: 50%;
-      border-width: 300px 0 0 300px;
-      border-color: transparent red;
-      transform: rotate(20deg);
+      transform: rotate(225deg);
+   
     }
 
     .no {
-      position: absolute;
-      top: 0;
-      width: 0px;
-      height: 0px;
-      border-style: solid;
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-      border-top-right-radius: 50%;
-      border-bottom-right-radius: 50%;
-      border-width: 300px 0 0 300px;
-      border-color: transparent green;
-      transform: rotate(225deg);
-
-
+      
     }
 
     .arrow {
