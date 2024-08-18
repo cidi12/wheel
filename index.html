@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Spin</title>
+  <style>
+  *{
+  
+    overflow: hidden
+    
+  }
+  
+    body {
+      
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      margin: 0;
+      
+    }
+
+    .roulette {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: skyblue;
+      position: absolute;
+      top: 200px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .option {
+      position: absolute;
+      /*top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);*/
+      font-size: 24px;
+      font-weight: bold;
+      background-color: transparent;
+      
+    }
+
+    .option.yes {
+
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-width: 300.5px 0 0px 300px;
+      border-color: transparent transparent transparent red;
+      transform: rotate(20deg)
+    }
+
+    .option.no {
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-width: 300.5px 0 0px 300px;
+      border-color: transparent transparent transparent green;
+      transform: rotate(225deg)
+
+
+    }
+    .arrow {
+      width: 0px;
+      height: 0px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid black;
+      position: absolute;
+      top: 165px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transform: rotate(180deg);
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+    .fate {
+      position: absolute;
+      top: 0;
+      display: flex;
+      justify-content: space-evenly;
+      gap: 10px;
+    }
+
+    .opt {
+      border: solid 2px black;
+      padding: 5px;
+    }
+
+    .no1 {
+      background-color: skyblue;
+    }
+
+    .no2 {
+      background-color: green;
+    }
+
+    .no3 {
+      background-color: red;
+    }
+    .footer {
+      position: absolute;
+      top: 500px;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .pity{
+      position: absolute;
+      top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center
+    }
+    #pity{
+      margin-top: -5px;
+      margin-bottom: -5px;
+    }
+    
+    
+  </style>
+</head>
+
+<body>
+  <div class="fate">
+    <p class="opt no1">Scroll FB</p>
+    <p class="opt no2">Ngoding</p>
+    <p class="opt no3">"Ngoding"</p>
+  </div>
+  <div class="pity">
+    <p>Udah berapa kali spin banh? </p>
+    <p id="pity">...</p>
+    <p id="cmt"></p>
+  </div>
+  <div class="arrow"></div>
+  <div class="roulette">
+    <div class="option yes">
+    </div>
+    <div class="option no">
+
+    </div>
+  </div>
+  <div class="footer">
+     <p id="texto">Enaknya ngelakuin aktifitas apa ya hari ini?</p>
+     <button id="spinButton">Spin</button>
+  </div>
+ 
+  <script>
+    const roulette = document.querySelector('.roulette');
+    const count = document.getElementById('pity')
+    const txt = document.getElementById('texto')
+          const spinButton = document.getElementById('spinButton');
+    const cmt = document.getElementById('cmt')
+      let counter =0
+      let counterNgocog = 0
+      let counterNgoding = 0
+          spinButton.addEventListener('click', () => {
+            
+            counter++
+            txt.innerHTML ="......"
+            
+            count.innerHTML=counter+'x'
+            if (counter > 5 && counter<=10){
+              cmt.innerHTML="Spin terus aja bang, sampe dapet scroll FB"
+            }
+            else if (counter > 10){
+              cmt.innerHTML = "Yahaha belom dapet2 jg scroll FBnya, tandanya disuruh ngoding bang"
+            }
+            roulette.style = 'rotate(0deg)'
+            
+            setTimeout(()=>{
+               const randomAngle = Math.floor(Math.random() * 360) + 720;
+            roulette.style.transition = 'transform 2s ease-out';
+            roulette.style.transform = `rotate(${randomAngle}deg)`;
+            
+          spinButton.style.display = "none"
+          
+             
+            roulette.style.transition = 'transform 2s ease-out'; 
+            roulette.style.transform = `rotate(${randomAngle}deg)`;
+            
+          spinButton.style.display = "none"
+          setTimeout(()=>{
+            nbt = randomAngle % 360
+          if (nbt < 26) {
+            cmt.innerHTML = " "
+            counter = 0
+            counterNgoding = 0
+            counterNgocog = 0
+            var result = 'Scroll FB'
+            txt.innerHTML = "Mantap, lanjut "+result;
+          } else if (
+            nbt >= 26 && nbt < 180) {
+            var result = 'Ngocog Standing dulu gak seh?'
+            counterNgocog++
+            if (counterNgocog>1){
+              txt.innerHTML = 'Ngocog lagi, Kocog terus batangnya bang'
+            }
+              else {
+                txt.innerHTML = result
+          }
+            }
+          else {
+            counterNgoding++
+            if (counterNgoding>2){
+              txt.innerHTML = "Ngoding bang, ngoding. Males bener dah";
+            }else {
+              var result = 'Nyalakan PC mu, buka VSCode, Saatnya ngoding'
+              txt.innerHTML = result;
+            }
+            
+          }
+          },2000)
+            },0)
+            setTimeout(() => {
+              spinButton.style.display="block"
+            }, 3000); 
+          });
+          
+  </script>
+</body>
+
+</html>
